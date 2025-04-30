@@ -30,12 +30,13 @@ class MainActivity : AppCompatActivity() {
     private fun changeImageWithAnimation(imageResId: Int) {
         // Cross-fade animation
         binding.imageView.animate()
-            .alpha(0f)
-            .setDuration(300)
+            .alpha(0f)  // Fade out
+            .setDuration(300)  // 300ms animation
             .withEndAction {
-                binding.imageView.setImageResource(imageResId)
+                // After fade-out completes:
+                binding.imageView.setImageResource(imageResId)  // Change image
                 binding.imageView.animate()
-                    .alpha(1f)
+                    .alpha(1f)  // Fade in
                     .setDuration(300)
                     .start()
             }
