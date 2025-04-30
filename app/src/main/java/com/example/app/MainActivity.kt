@@ -1,9 +1,8 @@
-package com.example.imageviewer
+package com.example.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import com.example.imageviewer.databinding.ActivityMainBinding
+import com.example.app.databinding.ActivityMainBinding  // This will now resolve
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -13,7 +12,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up button click listeners
+    }
+}
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         binding.btnRed.setOnClickListener {
             changeImageWithAnimation(R.drawable.image1)
         }
@@ -28,15 +32,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeImageWithAnimation(imageResId: Int) {
-        // Cross-fade animation
-        binding.imageView.animate()
-            .alpha(0f)  // Fade out
-            .setDuration(300)  // 300ms animation
+        binding.app.animate()
+            .alpha(0f)
+            .setDuration(300)
             .withEndAction {
-                // After fade-out completes:
-                binding.imageView.setImageResource(imageResId)  // Change image
-                binding.imageView.animate()
-                    .alpha(1f)  // Fade in
+                binding.app.setImageResource(imageResId)
+                binding.app.animate()
+                    .alpha(1f)
                     .setDuration(300)
                     .start()
             }
