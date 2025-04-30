@@ -1,47 +1,44 @@
-package com.example.app
+package com.example.imageviewer
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.app.ui.theme.AppTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import com.example.imageviewer.databinding.ActivityMainBinding
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            AppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Set up button click listeners
+        binding.btnRed.setOnClickListener {
+            changeImageWithAnimation(R.drawable.image1)
+        }
+
+        binding.btnGreen.setOnClickListener {
+            changeImageWithAnimation(R.drawable.image2)
+        }
+
+        binding.btnBlue.setOnClickListener {
+            changeImageWithAnimation(R.drawable.image3)
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AppTheme {
-        Greeting("Android")
+    private fun changeImageWithAnimation(imageResId: Int) {
+        // Cross-fade animation
+        binding.imageView.animate()
+            .alpha(0f)
+            .setDuration(300)
+            .withEndAction {
+                binding.imageView.setImageResource(imageResId)
+                binding.imageView.animate()
+                    .alpha(1f)
+                    .setDuration(300)
+                    .start()
+            }
+            .start()
     }
 }
