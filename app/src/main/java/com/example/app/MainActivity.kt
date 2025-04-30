@@ -1,23 +1,20 @@
-package com.example.app
+package com.example.app  // Updated package name
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.app.databinding.ActivityMainBinding  // This will now resolve
+import com.example.app.databinding.ActivityMainBinding  // Updated import path
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-    }
-}
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        // Set up button click listeners
         binding.btnRed.setOnClickListener {
             changeImageWithAnimation(R.drawable.image1)
         }
@@ -32,12 +29,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeImageWithAnimation(imageResId: Int) {
-        binding.app.animate()
+        binding.imageView.animate()
             .alpha(0f)
             .setDuration(300)
             .withEndAction {
-                binding.app.setImageResource(imageResId)
-                binding.app.animate()
+                binding.imageView.setImageResource(imageResId)
+                binding.imageView.animate()
                     .alpha(1f)
                     .setDuration(300)
                     .start()
