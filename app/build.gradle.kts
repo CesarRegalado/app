@@ -52,9 +52,9 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(libs.androidx.core.ktx)
-    implementation("com.google.android.material:material:1.12.0")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.android.material)
 
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
