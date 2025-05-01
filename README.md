@@ -9,5 +9,5 @@ I have a working apk ready, and more updates to do after I'm done with this assi
 
 
 ## Demo
-<img src="screenrecording.gif" width="300" controls></img>
+<img src="ScreenRecording.gif" width="300" controls></img>
 
