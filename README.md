@@ -8,5 +8,6 @@ I have a working apk ready, and more updates to do after I'm done with this assi
 
 
 
-## Demo Video
-<video src="videos/Screen_Recording_20250430_004258_app.mp4" width="300" controls></video>
+## Demo
+<video src="Screen_Recording_20250430_004258_app.mp4" width="300" controls></video>
+
